@@ -8,13 +8,8 @@ Head over to https://www.vagrantup.com/downloads.html and download the package s
 
 # Steps to create an ubuntu machine and run script to install puppet
 
-Once you install the vagrant on your host machine, from terminal execute the below steps.
-
-cd ~ 
-
-mkdir Vagrant_files
-
-cd Vagrant_files
-
-vagrant init  # it will generate a sample Vagrantfile 
-
+mkdir ~/vagrant-puppet-jenkins
+cd ~/vagrant-puppet-jenkins
+git clone https://github.com/manoharendla/Ubuntu.git
+cd Ubuntu
+vargant up
