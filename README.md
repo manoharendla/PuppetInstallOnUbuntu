@@ -9,7 +9,11 @@ Head over to https://www.vagrantup.com/downloads.html and download the package s
 # Steps to create an ubuntu machine and run script to install puppet
 
 mkdir ~/vagrant-puppet-jenkins
+
 cd ~/vagrant-puppet-jenkins
+
 git clone https://github.com/manoharendla/Ubuntu.git
+
 cd Ubuntu
+
 vargant up
