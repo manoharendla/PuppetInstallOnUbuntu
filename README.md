@@ -8,8 +8,11 @@ Head over to https://www.vagrantup.com/downloads.html and download the package s
 
 # Steps to create an ubuntu machine and run script to install puppet
 
-cd ~
+cd ~ 
+
 mkdir Vagrant_files
+
 cd Vagrant_files
+
 vagrant init  # it will generate a sample Vagrantfile 
 
