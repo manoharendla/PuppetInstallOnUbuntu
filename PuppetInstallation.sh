@@ -37,10 +37,11 @@ fi
 function confirmation{
  read -p "Are you sure you want to proceed with the installation ? Y/N: "  -n 1 -r 
 echo " " 
-if [[ ! $REPLY =~ ^[Yy]$ ]]
+if [[ ! $REPLY =~ ^[Yy]$ ]];
 then
  echo "Aborting installation"
  exit 1
+fi
 }
 
 echo "Script performs puppet server and agent installation on Ubuntu14.0.4 and Ubunut16.0.4"
@@ -62,7 +63,9 @@ case $installationType in
      puppet_agent_installation
    else
     echo "Aborting installation"
+   fi
    ;;
+   
    2)
    echo "You have opted for only Puppet master installation"
    confirmation
@@ -72,6 +75,7 @@ case $installationType in
      puppet_server_installation
    else
     echo "Aborting installation"
+   fi
    ;;
    3)
    echo "You have opted for only Puppet agent installation"
@@ -82,6 +86,7 @@ case $installationType in
      puppet_agent_installation
    else
     echo "Aborting installation"
+   fi
     ;;
    *)
    echo "Selected invalid installation type"
