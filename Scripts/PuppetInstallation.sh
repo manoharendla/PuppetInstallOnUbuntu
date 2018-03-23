@@ -62,7 +62,7 @@ node '$(hostname)'
 {
 include jenkins
 }
-EOL >> cd /etc/puppetlabs/code/environments/production/modules/site.pp ;
+EOL >> /etc/puppetlabs/code/environments/production/modules/site.pp ;
 }
 
 function apply_jenkins_module
