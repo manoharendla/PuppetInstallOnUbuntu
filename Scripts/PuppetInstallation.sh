@@ -2,7 +2,6 @@
 #Author: Manohar Endla
 #Date: 3/22/2018 16:00
 #
-alias puppet=/opt/puppetlabs/bin/puppet
 
 function puppet_server_installation
 {
@@ -51,7 +50,7 @@ function install_module_from_forge
 {
 cd /etc/puppetlabs/code/environments/production/modules
 echo "Installing puppet module from puppetforge"
-puppet module install rtyler-jenkins --version '1.7.0'
+/opt/puppetlabs/bin/puppet module install rtyler-jenkins --version '1.7.0'
 echo "Puppet moudle installation completed"
 echo ""
 }
@@ -69,7 +68,7 @@ EOL >> cd /etc/puppetlabs/code/environments/production/modules/site.pp ;
 function apply_jenkins_module
 {
 echo "Applying jenkins module"
-puppet apply /etc/puppetlabs/code/environments/production/modules/site.pp
+/opt/puppetlabs/bin/puppet apply /etc/puppetlabs/code/environments/production/modules/site.pp
 echo "Jenkins should be up and running. Jenkins is also configured to run on bootup"
 }
 
