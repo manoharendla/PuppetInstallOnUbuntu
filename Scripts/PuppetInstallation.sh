@@ -78,7 +78,7 @@ download_packages
 puppet_server_installation
 puppet_agent_installation
 server_status=check_puppet_service puppetserver
-if [ server_status -eq 0 ]
+if [ $server_status -eq 0 ]
 then
 install_module_from_forge
 create_site_pp
