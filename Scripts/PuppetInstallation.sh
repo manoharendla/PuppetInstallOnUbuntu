@@ -76,7 +76,7 @@ echo "Jenkins should be up and running. Jenkins is also configured to run on boo
 download_packages
 puppet_server_installation
 puppet_agent_installation
-server_status=check_puppet_service puppetserver
+server_status=$(check_puppet_service puppetserver)
 if [ $server_status -eq 0 ]
 then
 echo "puppet service is in running state. Proceeding with installation of Jenkins"
