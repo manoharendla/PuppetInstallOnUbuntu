@@ -66,8 +66,9 @@ include jenkins
 EOL >> cd /etc/puppetlabs/code/environments/production/modules/site.pp ;
 }
 
-function apply_jenkins_module{
-echo "Applying jenkins module "
+function apply_jenkins_module
+{
+echo "Applying jenkins module"
 puppet apply /etc/puppetlabs/code/environments/production/modules/site.pp
 echo "Jenkins should be up and running. Jenkins is also configured to run on bootup"
 }
