@@ -20,11 +20,11 @@ sudo systemctl enable puppet
 
 function download_packages
 {
-if [ grep "xenial" /etc/lsb-release ];
+if  cat /etc/lsb-release | grep "xenial"
 then
     curl -O https://apt.puppetlabs.com/puppetlabs-release-pc1-xenial.deb
     sudo dpkg -i puppetlabs-release-pc1-xenial.deb
-elif [ grep "trusty"  /etc/lsb-release ];
+elif cat /etc/lsb-release | grep "trusty"
 then 
    curl -O https://apt.puppetlabs.com/puppetlabs-release-pc1-trusty.deb
    sudo dpkg -i puppetlabs-release-pc1-trusty.deb
