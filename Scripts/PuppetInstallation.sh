@@ -34,16 +34,6 @@ else
 fi
 }
 
-function confirmation{
- read -p "Are you sure you want to proceed with the installation ? Y/N: "  -n 1 -r 
-echo " " 
-if [[ ! $REPLY =~ ^[Yy]$ ]];
-then
- echo "Aborting installation"
- exit 1
-fi
-}
-
 download_packages
 puppet_server_installation
 puppet_agent_installation
