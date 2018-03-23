@@ -11,7 +11,7 @@ sudo systemctl start puppetserver
 sudo systemctl enable puppetserver
 }
 
-function puppet_server_installation
+function puppet_agent_installation
 {
 sudo apt-get install -y puppet-agent
 sudo systemctl start puppet
