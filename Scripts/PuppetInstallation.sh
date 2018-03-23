@@ -2,6 +2,8 @@
 #Author: Manohar Endla
 #Date: 3/22/2018 16:00
 #
+alias puppet=/opt/puppetlabs/bin/puppet
+
 function puppet_server_installation
 {
 sudo apt-get update
@@ -34,9 +36,55 @@ else
 fi
 }
 
+function check_puppet_service
+{
+service=$1
+if (( $(ps -ef | grep -v grep | grep $service | wc -l) > 0 ))
+then
+echo "$service is running"
+return 0
+else
+echo "$service is in stopped state, starting again"
+return 1
+#/etc/init.d/$service start
+fi
+}
+function install_module_from_forge
+{
+cd /etc/puppetlabs/code/environments/production/modules
+echo "Installing puppet module from puppetforge"
+puppet module install rtyler-jenkins --version '1.7.0'
+echo "Puppet moudle installation completed"
+echo ""
+}
+
+function  create_site_pp
+{
+echo <<< EOL
+node '$(hostname)'
+{
+include jenkins
+}
+EOL >> cd /etc/puppetlabs/code/environments/production/modules/site.pp ;
+}
+
+function apply_jenkins_module{
+echo "Applying jenkins module "
+puppet apply /etc/puppetlabs/code/environments/production/modules/site.pp
+echo "Jenkins should be up and running. Jenkins is also configured to run on bootup"
+}
+
 download_packages
 puppet_server_installation
 puppet_agent_installation
+server_status=check_puppet_service puppetserver
+if [ server_status -eq 0 ]
+then
+install_module_from_forge
+create_site_pp
+apply_jenkins_module
+fi
+
 
 
 : '
