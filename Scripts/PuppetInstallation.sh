@@ -41,11 +41,9 @@ function check_puppet_service
 service=$1
 if (( $(ps -ef | grep -v grep | grep $service | wc -l) > 0 ))
 then
-echo "$service is running"
-return 0
+echo 0
 else
-echo "$service is in stopped state, starting again"
-return 1
+echo 1
 #/etc/init.d/$service start
 fi
 }
@@ -80,9 +78,13 @@ puppet_agent_installation
 server_status=check_puppet_service puppetserver
 if [ $server_status -eq 0 ]
 then
+echo "puppet service is in running state. Proceeding with installation of Jenkins"
 install_module_from_forge
 create_site_pp
 apply_jenkins_module
+else
+echo "Puppet service is not running. Exiting from installation"
+exit 1
 fi
 
 
