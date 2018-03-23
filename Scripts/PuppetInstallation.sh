@@ -57,12 +57,11 @@ echo ""
 
 function  create_site_pp
 {
-cat <<< EOT >> /etc/puppetlabs/code/environments/production/modules/site.pp
-node '$(hostname)'
-{
-include jenkins
-}
-EOT
+site=/etc/puppetlabs/code/environments/production/modules/site.pp
+echo "node $(hostname)" > $site 
+echo "{" >> $site
+echo "include jenkins" >> $site
+echo "}"  >> $site
 }
 
 function apply_jenkins_module
