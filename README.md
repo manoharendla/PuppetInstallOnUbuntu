@@ -12,7 +12,7 @@ mkdir ~/vagrant-puppet-jenkins
 
 cd ~/vagrant-puppet-jenkins
 
-git clone https://github.com/manoharendla/Ubuntu.git
+git clone https://github.com/manoharendla/PuppetInstallOnUbuntu.git
 
 cd Ubuntu
 
